@@ -5,6 +5,7 @@ import { LANGS } from '../i18n/translations'
 import { useAuth } from '../auth/AuthContext'
 import { Icon, Logo, type IconName } from './Icon'
 import { ChatWidget } from './ChatWidget'
+import { site } from '../data/site'
 
 function LangSwitcher() {
   const { lang, setLang } = useI18n()
@@ -92,6 +93,44 @@ function UserMenu() {
   )
 }
 
+function SiteFooter() {
+  const { t } = useI18n()
+  const socials = (Object.entries(site.socials) as [IconName, string][]).filter(([, url]) => url)
+  return (
+    <footer className="site-foot">
+      <div className="foot-grid">
+        <div className="foot-brand">
+          <Logo />
+          <p>{t.footer.tagline}</p>
+        </div>
+        <div className="foot-col">
+          <h4>{t.footer.help}</h4>
+          <Link to="/support">{t.nav.support}</Link>
+          <a href={`mailto:${site.email}`}>{site.email}</a>
+        </div>
+        <div className="foot-col">
+          <h4>{t.footer.legal}</h4>
+          <Link to="/terms">{t.footer.terms}</Link>
+          <Link to="/privacy">{t.footer.privacy}</Link>
+        </div>
+        {socials.length > 0 && (
+          <div className="foot-col">
+            <h4>{t.footer.find}</h4>
+            <div className="socials">
+              {socials.map(([name, url]) => (
+                <a key={name} href={url} target="_blank" rel="noopener noreferrer" aria-label={name}>
+                  <Icon name={name} size={19} />
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+      <div className="foot-copy">© {new Date().getFullYear()} UzGeologist. {t.footer.rights}</div>
+    </footer>
+  )
+}
+
 export function Layout() {
   const { t } = useI18n()
   const { user } = useAuth()
@@ -112,18 +151,18 @@ export function Layout() {
 
   const groups: { title: string; items: { to: string; icon: IconName; label: string }[] }[] = [
     {
-      title: t.nav.sectionLearn,
+      title: t.nav.sectionPlatform,
       items: [
         { to: '/', icon: 'home', label: t.nav.home },
-        { to: '/learning', icon: 'play', label: t.nav.learning },
+        { to: '/software', icon: 'box', label: t.nav.software },
+        { to: '/tutorials', icon: 'play', label: t.nav.learning },
+        { to: '/subscription', icon: 'card', label: t.nav.subscription },
       ],
     },
-    { title: t.nav.sectionTools, items: [{ to: '/software', icon: 'box', label: t.nav.software }] },
     {
       title: t.nav.sectionCompany,
       items: [
         { to: '/about', icon: 'info', label: t.nav.about },
-        { to: '/contact', icon: 'mail', label: t.nav.contact },
         ...(user ? [{ to: '/account', icon: 'user' as IconName, label: t.nav.account }] : []),
       ],
     },
@@ -165,18 +204,17 @@ export function Layout() {
             </div>
           ))}
         </nav>
-        <div className="sidebar-foot">© {new Date().getFullYear()} UzGeologist</div>
+        <div className="sidebar-bottom">
+          <NavLink to="/support" className="nav-item">
+            <Icon name="support" size={19} />
+            {t.nav.support}
+          </NavLink>
+        </div>
       </aside>
 
       <main className="content">
         <Outlet />
-        <footer className="foot">
-          <span>© {new Date().getFullYear()} UzGeologist. {t.footer.rights}</span>
-          <span className="foot-links">
-            <Link to="/about">{t.nav.about}</Link>
-            <Link to="/contact">{t.nav.contact}</Link>
-          </span>
-        </footer>
+        <SiteFooter />
       </main>
 
       <ChatWidget />

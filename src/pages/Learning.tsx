@@ -1,12 +1,16 @@
 import { useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { useI18n } from '../i18n/LanguageContext'
 import { categories, courses, type CategoryId, type Course } from '../data/courses'
 import { CourseCard, VideoModal } from '../components/Cards'
 
-export default function Learning() {
+export default function Tutorials() {
   const { t, tr } = useI18n()
-  const [cat, setCat] = useState<CategoryId | 'all'>('all')
+  const [params, setParams] = useSearchParams()
   const [open, setOpen] = useState<Course | null>(null)
+  const p = params.get('program')
+  const cat: CategoryId | 'all' = categories.some((c) => c.id === p) ? (p as CategoryId) : 'all'
+  const setCat = (c: CategoryId | 'all') => setParams(c === 'all' ? {} : { program: c }, { replace: true })
   const list = cat === 'all' ? courses : courses.filter((c) => c.category === cat)
 
   return (

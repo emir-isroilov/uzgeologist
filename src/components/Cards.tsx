@@ -7,11 +7,10 @@ import { useAuth } from '../auth/AuthContext'
 import { Icon } from './Icon'
 
 const catColors: Record<CategoryId, [string, string, string]> = {
-  geology: ['#3a2a1e', '#8c5a32', '#d07a3a'],
-  geophysics: ['#1d2b3a', '#2f5d7c', '#5fa3c7'],
-  hydro: ['#14302f', '#2f6f6a', '#69b3a6'],
-  gis: ['#24263d', '#4b4f8a', '#8f93d6'],
-  mining: ['#2f2422', '#7a4b3a', '#c48a63'],
+  osmon: ['#15243a', '#2f5f93', '#6fa3d6'],
+  zamin: ['#2f2219', '#8a4f26', '#d07a3a'],
+  usturlob: ['#132a24', '#2f6f58', '#6fb89a'],
+  basics: ['#24263d', '#4b4f8a', '#8f93d6'],
 }
 
 export function CourseThumb({ course }: { course: Course }) {
@@ -106,7 +105,7 @@ export function VideoModal({ course, onClose }: { course: Course; onClose: () =>
 export function SoftwareMark({ sw, size = 44 }: { sw: Software; size?: number }) {
   return (
     <span className="sw-mark" style={{ background: sw.color, width: size, height: size, fontSize: size * 0.36 }}>
-      {sw.name.replace(/^UzGeo /, '').slice(0, 2).toUpperCase()}
+      {sw.name.slice(0, 1).toUpperCase()}
     </span>
   )
 }
@@ -120,7 +119,7 @@ export function SoftwareCard({ sw }: { sw: Software }) {
         <SoftwareMark sw={sw} />
         <div>
           <h3>{sw.name}</h3>
-          <small>{sw.vendor}</small>
+          <small>{tr(sw.tagline)}</small>
         </div>
       </div>
       <p>{tr(sw.summary)}</p>
@@ -128,7 +127,7 @@ export function SoftwareCard({ sw }: { sw: Software }) {
         {latest ? (
           <span className="ver-pill">{t.software.latest}: <b>v{latest.version}</b></span>
         ) : (
-          <span className="ver-pill muted"><Icon name="external" size={14} /> {t.software.official}</span>
+          <span className="ver-pill muted">{t.software.soon}</span>
         )}
         <span className="muted small">{sw.platform}</span>
       </div>

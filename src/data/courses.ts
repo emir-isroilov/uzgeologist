@@ -1,21 +1,23 @@
 import type { L10n } from '../i18n/translations'
 
 /**
- * VIDEO DARSLAR
- * Yangi kurs qo'shish uchun ro'yxatga yangi obyekt qo'shing.
- * `youtubeId` — YouTube video havolasidagi ID (masalan https://youtu.be/ABC123 -> "ABC123").
+ * TUTORIALLAR
+ * Yangi tutorial qo'shish uchun ro'yxatga yangi obyekt qo'shing.
+ * `category` — qaysi dasturga tegishli: 'osmon' | 'zamin' | 'usturlob' | 'basics'
+ * `youtubeId` — YouTube havolasidagi ID (https://youtu.be/ABC123 -> "ABC123").
  * Bo'sh qoldirilsa "Video tez orada" ko'rsatiladi.
+ *
+ * Diqqat: quyidagi tutoriallar namunaviy — haqiqiy darslaringiz bilan almashtiring.
  */
 
-export type CategoryId = 'geology' | 'geophysics' | 'hydro' | 'gis' | 'mining'
+export type CategoryId = 'osmon' | 'zamin' | 'usturlob' | 'basics'
 export type Level = 'beginner' | 'intermediate' | 'advanced'
 
 export const categories: { id: CategoryId; name: L10n }[] = [
-  { id: 'geology', name: { uz: 'Umumiy geologiya', en: 'General geology', ru: 'Общая геология' } },
-  { id: 'geophysics', name: { uz: 'Geofizika', en: 'Geophysics', ru: 'Геофизика' } },
-  { id: 'hydro', name: { uz: 'Gidrogeologiya', en: 'Hydrogeology', ru: 'Гидрогеология' } },
-  { id: 'gis', name: { uz: 'GIS va xaritalash', en: 'GIS & mapping', ru: 'ГИС и картография' } },
-  { id: 'mining', name: { uz: 'Kon geologiyasi', en: 'Mining geology', ru: 'Горная геология' } },
+  { id: 'osmon', name: { uz: 'Osmon', en: 'Osmon', ru: 'Osmon' } },
+  { id: 'zamin', name: { uz: 'Zamin', en: 'Zamin', ru: 'Zamin' } },
+  { id: 'usturlob', name: { uz: 'Usturlob', en: 'Usturlob', ru: 'Usturlob' } },
+  { id: 'basics', name: { uz: 'Geologiya asoslari', en: 'Geology basics', ru: 'Основы геологии' } },
 ]
 
 export type Course = {
@@ -32,110 +34,84 @@ export type Course = {
 
 export const courses: Course[] = [
   {
-    id: 'intro-geology',
-    category: 'geology',
+    id: 'osmon-start',
+    category: 'osmon',
     level: 'beginner',
-    lessons: 12,
-    hours: 6,
+    lessons: 6,
+    hours: 2,
     isNew: true,
-    title: { uz: 'Geologiyaga kirish', en: 'Introduction to geology', ru: 'Введение в геологию' },
+    title: { uz: 'Osmon: ishni boshlash', en: 'Osmon: getting started', ru: 'Osmon: начало работы' },
     description: {
-      uz: "Yer tuzilishi, tog' jinslari turlari va geologik jarayonlar haqida asosiy tushunchalar.",
-      en: 'Earth structure, rock types and geological processes — the essentials.',
-      ru: 'Строение Земли, типы горных пород и геологические процессы — основы.',
+      uz: "Dasturni o'rnatish, interfeys bilan tanishish va birinchi loyihani yaratish.",
+      en: 'Installing the program, a tour of the interface and creating your first project.',
+      ru: 'Установка, знакомство с интерфейсом и создание первого проекта.',
     },
   },
   {
-    id: 'mineralogy',
-    category: 'geology',
-    level: 'intermediate',
-    lessons: 10,
-    hours: 5,
-    title: { uz: 'Mineralogiya amaliyoti', en: 'Practical mineralogy', ru: 'Практическая минералогия' },
-    description: {
-      uz: "Minerallarni dala sharoitida va mikroskop ostida aniqlash usullari.",
-      en: 'Identifying minerals in the field and under the microscope.',
-      ru: 'Определение минералов в полевых условиях и под микроскопом.',
-    },
-  },
-  {
-    id: 'geophysics-basics',
-    category: 'geophysics',
-    level: 'intermediate',
-    lessons: 14,
-    hours: 8,
-    isNew: true,
-    title: { uz: 'Amaliy geofizika asoslari', en: 'Applied geophysics basics', ru: 'Основы прикладной геофизики' },
-    description: {
-      uz: "Seysmik, elektr va magnit qidiruv usullari hamda natijalarni talqin qilish.",
-      en: 'Seismic, electrical and magnetic survey methods and interpreting results.',
-      ru: 'Сейсмические, электрические и магнитные методы разведки и интерпретация данных.',
-    },
-  },
-  {
-    id: 'hydrogeology',
-    category: 'hydro',
-    level: 'beginner',
-    lessons: 9,
-    hours: 4,
-    title: { uz: 'Gidrogeologiya: yer osti suvlari', en: 'Hydrogeology: groundwater', ru: 'Гидрогеология: подземные воды' },
-    description: {
-      uz: "Suvli qatlamlar, filtratsiya va quduq sinovlari bo'yicha amaliy kurs.",
-      en: 'A practical course on aquifers, filtration and well testing.',
-      ru: 'Практический курс по водоносным горизонтам, фильтрации и опытным откачкам.',
-    },
-  },
-  {
-    id: 'qgis-geologists',
-    category: 'gis',
-    level: 'beginner',
-    lessons: 16,
-    hours: 7,
-    isNew: true,
-    title: { uz: 'Geologlar uchun QGIS', en: 'QGIS for geologists', ru: 'QGIS для геологов' },
-    description: {
-      uz: "Geologik xarita tuzish, qatlamlar bilan ishlash va ma'lumotlarni eksport qilish.",
-      en: 'Building geological maps, working with layers and exporting data.',
-      ru: 'Построение геологических карт, работа со слоями и экспорт данных.',
-    },
-  },
-  {
-    id: '3d-modeling',
-    category: 'gis',
-    level: 'advanced',
-    lessons: 11,
-    hours: 9,
-    title: { uz: '3D geologik modellashtirish', en: '3D geological modelling', ru: '3D геологическое моделирование' },
-    description: {
-      uz: "Burg'ulash ma'lumotlaridan 3D model qurish va ruda tanalarini tasvirlash.",
-      en: 'Building 3D models from drillhole data and visualising ore bodies.',
-      ru: 'Построение 3D-моделей по данным бурения и визуализация рудных тел.',
-    },
-  },
-  {
-    id: 'resource-estimation',
-    category: 'mining',
-    level: 'advanced',
-    lessons: 13,
-    hours: 10,
-    title: { uz: 'Zaxiralarni hisoblash', en: 'Resource estimation', ru: 'Подсчёт запасов' },
-    description: {
-      uz: "Geostatistika, kriging va zaxiralarni toifalarga ajratish asoslari.",
-      en: 'Geostatistics, kriging and resource classification fundamentals.',
-      ru: 'Основы геостатистики, кригинга и классификации запасов.',
-    },
-  },
-  {
-    id: 'core-logging',
-    category: 'mining',
+    id: 'zamin-start',
+    category: 'zamin',
     level: 'beginner',
     lessons: 8,
     hours: 3,
-    title: { uz: "Kernni tavsiflash (core logging)", en: 'Core logging', ru: 'Документация керна' },
+    isNew: true,
+    title: { uz: 'Zamin: ishni boshlash', en: 'Zamin: getting started', ru: 'Zamin: начало работы' },
     description: {
-      uz: "Burg'ulash kernini to'g'ri tavsiflash, fotosuratga olish va hujjatlashtirish.",
-      en: 'Describing, photographing and documenting drill core correctly.',
-      ru: 'Правильное описание, фотодокументация и учёт керна.',
+      uz: "Loyiha yaratish va burg'ulash ma'lumotlarini import qilish.",
+      en: 'Creating a project and importing drillhole data.',
+      ru: 'Создание проекта и импорт данных бурения.',
+    },
+  },
+  {
+    id: 'zamin-block-model',
+    category: 'zamin',
+    level: 'advanced',
+    lessons: 10,
+    hours: 5,
+    title: { uz: 'Zamin: blok model va zaxiralar', en: 'Zamin: block models and resources', ru: 'Zamin: блочная модель и запасы' },
+    description: {
+      uz: 'Blok model qurish, sifatlarni interpolyatsiya qilish va zaxiralarni hisoblash.',
+      en: 'Building a block model, interpolating grades and estimating resources.',
+      ru: 'Построение блочной модели, интерполяция содержаний и подсчёт запасов.',
+    },
+  },
+  {
+    id: 'usturlob-start',
+    category: 'usturlob',
+    level: 'beginner',
+    lessons: 7,
+    hours: 2,
+    isNew: true,
+    title: { uz: 'Usturlob: ishni boshlash', en: 'Usturlob: getting started', ru: 'Usturlob: начало работы' },
+    description: {
+      uz: "Qatlamlar qo'shish, koordinata tizimini sozlash va birinchi xaritani tayyorlash.",
+      en: 'Adding layers, setting the coordinate system and making your first map.',
+      ru: 'Добавление слоёв, настройка системы координат и первая карта.',
+    },
+  },
+  {
+    id: 'usturlob-analysis',
+    category: 'usturlob',
+    level: 'intermediate',
+    lessons: 9,
+    hours: 4,
+    title: { uz: 'Usturlob: fazoviy tahlil', en: 'Usturlob: spatial analysis', ru: 'Usturlob: пространственный анализ' },
+    description: {
+      uz: 'Bufer, kesishma va raster tahlil vositalaridan amalda foydalanish.',
+      en: 'Using buffer, overlay and raster analysis tools in practice.',
+      ru: 'Буферы, наложение и растровый анализ на практике.',
+    },
+  },
+  {
+    id: 'basics-intro',
+    category: 'basics',
+    level: 'beginner',
+    lessons: 12,
+    hours: 6,
+    title: { uz: 'Geologiyaga kirish', en: 'Introduction to geology', ru: 'Введение в геологию' },
+    description: {
+      uz: "Yer tuzilishi, tog' jinslari va geologik jarayonlar haqida asosiy tushunchalar.",
+      en: 'Earth structure, rocks and geological processes — the essentials.',
+      ru: 'Строение Земли, горные породы и геологические процессы — основы.',
     },
   },
 ]

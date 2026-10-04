@@ -30,7 +30,7 @@ const uz = {
   home: {
     greetGuest: 'UzGeologist platformasiga xush kelibsiz',
     greetUser: 'Xush kelibsiz, {name}',
-    lead: "Osmon, Usturlob va LithoSat Studio — geologlar uchun mahalliy dasturlar, tutoriallar va yordam bir joyda.",
+    lead: "Osmon, Samo, Usturlob va LithoSat Studio — geologlar uchun mahalliy dasturlar, tutoriallar va yordam bir joyda.",
     ctaStart: 'Bepul boshlash',
     ctaSoftware: "Dasturlarni ko'rish",
     ourSoftware: 'Bizning dasturlarimiz',
@@ -139,7 +139,7 @@ const uz = {
     values: 'Aniqlik, ochiqlik va amaliy natija — har bir dasturda va har bir tutorialda.',
     teamT: 'Nima taklif qilamiz',
     offer: [
-      'Osmon, Usturlob, LithoSat Studio va Muhandis dasturlari',
+      'Osmon, Samo, Usturlob, LithoSat Studio va Muhandis dasturlari',
       "Har bir dastur bo'yicha tutoriallar",
       "O'zbek, ingliz va rus tillarida kontent",
       "Tezkor support va AI yordamchi",
@@ -222,7 +222,7 @@ const en: Dict = {
   top: { search: 'Search software and tutorials…', login: 'Sign in', register: 'Sign up', logout: 'Sign out', menu: 'Menu' },
   home: {
     greetGuest: 'Welcome to UzGeologist', greetUser: 'Welcome back, {name}',
-    lead: 'Osmon, Usturlob and LithoSat Studio — local software for geologists, with tutorials and support in one place.',
+    lead: 'Osmon, Samo, Usturlob and LithoSat Studio — local software for geologists, with tutorials and support in one place.',
     ctaStart: 'Get started free', ctaSoftware: 'Browse software', ourSoftware: 'Our software', quick: 'Quick links',
     qSoftware: 'Download software and track versions', qLearning: 'Learn the programs step by step',
     qSubscription: 'Pick the plan that fits you', qSupport: 'Send a suggestion, complaint or question',
@@ -270,7 +270,7 @@ const en: Dict = {
     visionT: 'Our goal', vision: 'Become a worthy local alternative to expensive foreign software.',
     valuesT: 'Our values', values: 'Accuracy, openness and practical results — in every program and every tutorial.',
     teamT: 'What we offer',
-    offer: ['Osmon, Usturlob, LithoSat Studio and Muhandis', 'Tutorials for every program', 'Content in Uzbek, English and Russian', 'Fast support and an AI assistant'],
+    offer: ['Osmon, Samo, Usturlob, LithoSat Studio and Muhandis', 'Tutorials for every program', 'Content in Uzbek, English and Russian', 'Fast support and an AI assistant'],
   },
   auth: {
     loginTitle: 'Sign in to your account', registerTitle: 'Create an account', name: 'Full name', email: 'Email',
@@ -328,7 +328,7 @@ const ru: Dict = {
   top: { search: 'Поиск программ и туториалов…', login: 'Войти', register: 'Регистрация', logout: 'Выйти', menu: 'Меню' },
   home: {
     greetGuest: 'Добро пожаловать в UzGeologist', greetUser: 'С возвращением, {name}',
-    lead: 'Osmon, Usturlob и LithoSat Studio — отечественные программы для геологов, туториалы и поддержка в одном месте.',
+    lead: 'Osmon, Samo, Usturlob и LithoSat Studio — отечественные программы для геологов, туториалы и поддержка в одном месте.',
     ctaStart: 'Начать бесплатно', ctaSoftware: 'Смотреть программы', ourSoftware: 'Наши программы', quick: 'Быстрые ссылки',
     qSoftware: 'Скачивайте программы и следите за версиями', qLearning: 'Осваивайте программы шаг за шагом',
     qSubscription: 'Выберите подходящий тариф', qSupport: 'Отправьте предложение, жалобу или вопрос',
@@ -376,7 +376,7 @@ const ru: Dict = {
     visionT: 'Наша цель', vision: 'Стать достойной отечественной альтернативой дорогим зарубежным программам.',
     valuesT: 'Наши ценности', values: 'Точность, открытость и практический результат — в каждой программе и каждом туториале.',
     teamT: 'Что мы предлагаем',
-    offer: ['Программы Osmon, Usturlob, LithoSat Studio и Muhandis', 'Туториалы по каждой программе', 'Контент на узбекском, английском и русском', 'Быстрая поддержка и AI-помощник'],
+    offer: ['Программы Osmon, Samo, Usturlob, LithoSat Studio и Muhandis', 'Туториалы по каждой программе', 'Контент на узбекском, английском и русском', 'Быстрая поддержка и AI-помощник'],
   },
   auth: {
     loginTitle: 'Вход в аккаунт', registerTitle: 'Создать аккаунт', name: 'Полное имя', email: 'Email',

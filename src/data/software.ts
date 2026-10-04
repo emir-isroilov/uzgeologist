@@ -62,6 +62,26 @@ export const software: Software[] = [
     versions: [],
   },
   {
+    id: 'samo',
+    name: 'Samo',
+    color: '#3b7fc4',
+    platform: 'Windows',
+    license,
+    status: inDev,
+    tagline: {
+      uz: "Masofadan zondlash va kosmik tasvirlar",
+      en: 'Remote sensing and satellite imagery',
+      ru: 'Дистанционное зондирование и космоснимки',
+    },
+    summary: {
+      uz: "Samo — masofadan zondlash (remote sensing) va kosmik tasvirlar bilan ishlash uchun dastur. Osmon dasturining shu yo'nalishdagi imkoniyatlari asosida alohida dastur sifatida yaratilmoqda.",
+      en: 'Samo is a program for remote sensing and satellite imagery, being built as a standalone tool from the imagery capabilities of Osmon.',
+      ru: 'Samo — программа для дистанционного зондирования и работы с космоснимками, выделенная в отдельный продукт из соответствующих возможностей Osmon.',
+    },
+    features: [],
+    versions: [],
+  },
+  {
     id: 'usturlob',
     name: 'Usturlob',
     color: '#3d8a6e',

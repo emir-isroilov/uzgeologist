@@ -6,7 +6,7 @@ import type { L10n } from '../i18n/translations'
  * Tuzilma: YO'NALISH (track) → DARAJA (level) → DARS (course)
  *
  * 1) `tracks` — yo'nalishlar ro'yxati. Ikki guruh bor:
- *      group: 'software' — dasturlar (ArcGIS, ArcGIS Pro, Global Mapper, Osmon, Muhandis)
+ *      group: 'software' — dasturlar (ArcGIS, ArcGIS Pro, Global Mapper, Osmon, Samo, Muhandis)
  *      group: 'science'  — geologiya fanlari (geologiya, geofizika, geokimyo ...)
  *    `levels` — shu yo'nalishda qaysi darajalar bo'lishi.
  *    `locked: true` — yo'nalish yopiq (darslar ko'rinmaydi, "Yopiq" belgisi chiqadi).
@@ -94,6 +94,18 @@ export const tracks: Track[] = [
       uz: "Osmon dasturi: boshlang'ich darajadan professional darajagacha.",
       en: 'The Osmon program, from beginner to professional level.',
       ru: 'Программа Osmon: от начального до профессионального уровня.',
+    },
+  },
+  {
+    id: 'samo',
+    group: 'software',
+    name: n('Samo'),
+    palette: ['#0f2238', '#2c5f96', '#79b2e6'],
+    levels: ALL,
+    description: {
+      uz: "Samo dasturi: masofadan zondlash va kosmik tasvirlar — boshlang'ichdan professional darajagacha.",
+      en: 'The Samo program: remote sensing and satellite imagery, from beginner to professional.',
+      ru: 'Программа Samo: дистанционное зондирование и космоснимки — от начального до профессионального уровня.',
     },
   },
   {

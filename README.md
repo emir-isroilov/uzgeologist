@@ -1,10 +1,10 @@
 # UzGeologist
 
-**uzgeologist.uz** — Osmon, Usturlob, LithoSat Studio va Muhandis dasturlari, tutoriallar, obuna va support platformasi.
+**uzgeologist.uz** — Osmon, Samo, Usturlob, LithoSat Studio va Muhandis dasturlari, tutoriallar, obuna va support platformasi.
 
 ## Imkoniyatlar
 - 3 til: o'zbek (standart), ingliz, rus — tanlov brauzerda eslab qolinadi
-- Dasturlar: Osmon, Usturlob, LithoSat Studio, Muhandis — imkoniyatlar va versiyalar tarixi
+- Dasturlar: Osmon, Samo, Usturlob, LithoSat Studio, Muhandis — imkoniyatlar va versiyalar tarixi
 - Tutoriallar (dastur bo'yicha filtr, video oynasi)
 - Obuna tariflari
 - Support: taklif, shikoyat, texnik yordam, hamkorlik + FAQ
@@ -42,6 +42,8 @@ npm run build    # tayyor fayllar dist/ papkasida
 4. **Domain management → Add domain** → `uzgeologist.uz`, so'ng ahost.uz panelida Netlify ko'rsatgan DNS yozuvlarini kiriting.
 
 ## O'zgarishlar tarixi
+- **0.5.0** — Samo (remote sensing va kosmik tasvirlar) dasturi va tutorial yo'nalishi qo'shildi.
+- **0.4.0** — Tutoriallar yo'nalish va darajalar bo'yicha qayta qurildi.
 - **0.3.0** — Dasturlar: Osmon (ishlab chiqilmoqda), Usturlob, LithoSat Studio, Muhandis (tez orada); Zamin olib tashlandi.
 - **0.2.0** — Osmon, Zamin, Usturlob; Tutoriallar; Obuna; Support; yangi footer va huquqiy sahifalar.
 - **0.1.0** — Birinchi versiya: portal ko'rinishi, 3 til, darslar, dasturlar, auth, AI chat.

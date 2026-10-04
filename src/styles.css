@@ -443,3 +443,34 @@ h1, h2, h3 { letter-spacing: -0.02em; line-height: 1.2; }
   .row-2 { grid-template-columns: 1fr; }
   .foot-grid { grid-template-columns: 1fr; }
 }
+
+.sw-status { margin-left: auto; align-self: flex-start; font-size: 11px; font-weight: 800; background: var(--accent-soft); color: var(--accent-deep); padding: 3px 8px; border-radius: 6px; white-space: nowrap; }
+
+/* ---------- Tutorial tracks ---------- */
+.track-group + .track-group { margin-top: 12px; }
+.group-lead { color: var(--muted); margin: -8px 0 16px; }
+.track-card { overflow: hidden; display: flex; flex-direction: column; transition: box-shadow .2s, transform .2s; }
+.track-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+.track-thumb { position: relative; aspect-ratio: 16 / 7; overflow: hidden; }
+.track-name { position: absolute; left: 18px; bottom: 14px; color: #fff; font-size: 21px; font-weight: 800; letter-spacing: -0.02em; text-shadow: 0 2px 10px rgba(0,0,0,.35); }
+.track-lock { position: absolute; top: 12px; right: 12px; display: inline-flex; align-items: center; gap: 5px; background: rgba(12,18,24,.72); color: #fff; font-size: 11.5px; font-weight: 800; padding: 4px 9px; border-radius: 999px; }
+.track-card.is-locked .track-thumb svg { filter: grayscale(.6) brightness(.8); }
+.lvl-range { background: var(--accent-soft); color: var(--accent-deep); padding: 2px 9px; border-radius: 999px; font-size: 11.5px; }
+.track-hero { display: grid; grid-template-columns: 220px 1fr; overflow: hidden; }
+.track-hero-art { min-height: 170px; }
+.track-hero-art svg { width: 100%; height: 100%; }
+.track-hero-main { padding: 24px 26px; }
+.track-hero-main h1 { font-size: 28px; margin: 4px 0 6px; }
+.track-hero-main p { color: var(--muted); }
+.level-steps { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.level-step { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 700; padding: 5px 12px 5px 5px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface-2); }
+.level-step b, .level-num { width: 22px; height: 22px; border-radius: 50%; background: var(--brand-dark); color: #fff; display: inline-grid; place-items: center; font-size: 12px; }
+.level-title { display: flex; align-items: center; gap: 10px; }
+.level-num { width: 26px; height: 26px; font-size: 13px; background: var(--accent); }
+.locked-card { margin-top: 18px; padding: 24px; display: flex; gap: 16px; align-items: center; }
+.locked-card p { color: var(--muted); }
+@media (max-width: 700px) {
+  .track-hero { grid-template-columns: 1fr; }
+  .track-hero-art { min-height: 110px; }
+}
+.lvl-pro { background: #ece8f7; color: #5a3f9c; }

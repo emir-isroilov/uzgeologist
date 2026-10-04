@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import { useI18n } from '../i18n/LanguageContext'
 import { useAuth } from '../auth/AuthContext'
 import { software } from '../data/software'
-import { courses, type Course } from '../data/courses'
+import { coursesOf, trackById, type Course } from '../data/courses'
 import { CourseCard, SoftwareCard, SoftwareMark, VideoModal } from '../components/Cards'
 import { Icon } from '../components/Icon'
 import NotFound from './NotFound'
@@ -30,7 +30,8 @@ export function SoftwareDetail() {
   const [open, setOpen] = useState<Course | null>(null)
   const sw = software.find((s) => s.id === id)
   if (!sw) return <NotFound />
-  const tutorials = courses.filter((c) => c.category === sw.id)
+  const hasTrack = !!trackById(sw.id) && !trackById(sw.id)?.locked
+  const tutorials = hasTrack ? coursesOf(sw.id) : []
 
   const DownloadBtn = ({ url, primary }: { url?: string; primary?: boolean }) => {
     if (!url) return <span className="btn btn-disabled btn-sm">{t.software.soon}</span>
@@ -115,7 +116,7 @@ export function SoftwareDetail() {
         <>
           <div className="section-row">
             <h2 className="section-title">{t.software.tutorials}</h2>
-            <Link to={`/tutorials?program=${sw.id}`} className="link">{t.home.viewAll}</Link>
+            <Link to={`/tutorials/${sw.id}`} className="link">{t.home.viewAll}</Link>
           </div>
           <section className="grid-3">
             {tutorials.map((c) => <CourseCard key={c.id} course={c} onOpen={setOpen} />)}

@@ -47,7 +47,7 @@ export const plans: Plan[] = [
       ru: 'Для специалистов',
     },
     features: [
-      { uz: 'Osmon, Zamin va Usturlob — to\'liq versiyalar', en: 'Osmon, Zamin and Usturlob — full versions', ru: 'Osmon, Zamin и Usturlob — полные версии' },
+      { uz: "UzGeologist dasturlarining to'liq versiyalari", en: 'Full versions of UzGeologist software', ru: 'Полные версии программ UzGeologist' },
       { uz: 'Barcha tutoriallar', en: 'All tutorials', ru: 'Все туториалы' },
       { uz: 'Barcha yangilanishlar', en: 'All updates', ru: 'Все обновления' },
       { uz: 'Tezkor texnik yordam', en: 'Priority support', ru: 'Приоритетная поддержка' },

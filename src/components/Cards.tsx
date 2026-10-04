@@ -1,21 +1,16 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useI18n } from '../i18n/LanguageContext'
-import { categories, type CategoryId, type Course } from '../data/courses'
+import { trackById, coursesOf, type Course, type Track } from '../data/courses'
 import type { Software } from '../data/software'
 import { useAuth } from '../auth/AuthContext'
 import { Icon } from './Icon'
 
-const catColors: Record<CategoryId, [string, string, string]> = {
-  osmon: ['#15243a', '#2f5f93', '#6fa3d6'],
-  zamin: ['#2f2219', '#8a4f26', '#d07a3a'],
-  usturlob: ['#132a24', '#2f6f58', '#6fb89a'],
-  basics: ['#24263d', '#4b4f8a', '#8f93d6'],
-}
+const FALLBACK: [string, string, string] = ['#24263d', '#4b4f8a', '#8f93d6']
 
-export function CourseThumb({ course }: { course: Course }) {
-  const [a, b, c] = catColors[course.category]
-  const seed = course.id.length * 13
+export function CourseThumb({ course, palette }: { course?: Course; palette?: [string, string, string] }) {
+  const [a, b, c] = palette ?? (course && trackById(course.track)?.palette) ?? FALLBACK
+  const seed = (course?.id.length ?? 7) * 13
   return (
     <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" className="thumb-svg" aria-hidden="true">
       <rect width="320" height="180" fill={a} />
@@ -28,7 +23,7 @@ export function CourseThumb({ course }: { course: Course }) {
 
 export function CourseCard({ course, onOpen }: { course: Course; onOpen: (c: Course) => void }) {
   const { t, tr } = useI18n()
-  const cat = categories.find((c) => c.id === course.category)!
+  const track = trackById(course.track)
   return (
     <button className="card course-card" onClick={() => onOpen(course)}>
       <div className="thumb">
@@ -37,12 +32,12 @@ export function CourseCard({ course, onOpen }: { course: Course; onOpen: (c: Cou
         {course.isNew && <span className="badge-new">NEW</span>}
       </div>
       <div className="card-body">
-        <span className="eyebrow">{tr(cat.name)}</span>
+        {track && <span className="eyebrow">{tr(track.name)}</span>}
         <h3>{tr(course.title)}</h3>
         <p>{tr(course.description)}</p>
         <div className="meta">
-          <span><Icon name="layers" size={15} /> {course.lessons} {t.learning.lessons}</span>
-          <span><Icon name="clock" size={15} /> {course.hours} h</span>
+          {course.lessons != null && <span><Icon name="layers" size={15} /> {course.lessons} {t.learning.lessons}</span>}
+          {course.hours != null && <span><Icon name="clock" size={15} /> {course.hours} h</span>}
           <span className={`lvl lvl-${course.level}`}>{t.learning.level[course.level]}</span>
         </div>
       </div>
@@ -86,8 +81,8 @@ export function VideoModal({ course, onClose }: { course: Course; onClose: () =>
           <h2>{tr(course.title)}</h2>
           <p>{tr(course.description)}</p>
           <div className="meta">
-            <span><Icon name="layers" size={15} /> {course.lessons} {t.learning.lessons}</span>
-            <span><Icon name="clock" size={15} /> {course.hours} h</span>
+            {course.lessons != null && <span><Icon name="layers" size={15} /> {course.lessons} {t.learning.lessons}</span>}
+            {course.hours != null && <span><Icon name="clock" size={15} /> {course.hours} h</span>}
             <span className={`lvl lvl-${course.level}`}>{t.learning.level[course.level]}</span>
           </div>
           {!user && (
@@ -127,9 +122,37 @@ export function SoftwareCard({ sw }: { sw: Software }) {
         {latest ? (
           <span className="ver-pill">{t.software.latest}: <b>v{latest.version}</b></span>
         ) : (
-          <span className="ver-pill muted">{t.software.soon}</span>
+          <span className="ver-pill muted">{sw.status ? tr(sw.status) : t.software.soon}</span>
         )}
         <span className="muted small">{sw.platform}</span>
+      </div>
+    </Link>
+  )
+}
+
+export function TrackCard({ track }: { track: Track }) {
+  const { t, tr } = useI18n()
+  const count = coursesOf(track.id).length
+  const first = track.levels[0]
+  const last = track.levels[track.levels.length - 1]
+  return (
+    <Link to={`/tutorials/${track.id}`} className={`card track-card ${track.locked ? 'is-locked' : ''}`}>
+      <div className="track-thumb">
+        <CourseThumb palette={track.palette} />
+        <span className="track-name">{tr(track.name)}</span>
+        {track.locked && (
+          <span className="track-lock"><Icon name="lock" size={14} /> {t.learning.locked}</span>
+        )}
+      </div>
+      <div className="card-body">
+        <p>{tr(track.description)}</p>
+        <div className="meta">
+          <span className="lvl-range">
+            {t.learning.level[first]}
+            {first !== last && <> → {t.learning.level[last]}</>}
+          </span>
+          {!track.locked && count > 0 && <span><Icon name="layers" size={15} /> {count} {t.learning.courses}</span>}
+        </div>
       </div>
     </Link>
   )

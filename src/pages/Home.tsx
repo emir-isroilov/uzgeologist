@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useI18n } from '../i18n/LanguageContext'
 import { useAuth } from '../auth/AuthContext'
-import { courses, type Course } from '../data/courses'
+import { courses, tracks, type Course } from '../data/courses'
 import { software } from '../data/software'
 import { CourseCard, SoftwareCard, VideoModal } from '../components/Cards'
 import { Icon, type IconName } from '../components/Icon'
@@ -43,7 +43,7 @@ export default function Home() {
 
       <section className="stats">
         <div><b>{software.length}</b><span>{t.home.stats.programs}</span></div>
-        <div><b>{courses.length}+</b><span>{t.home.stats.courses}</span></div>
+        <div><b>{tracks.length}</b><span>{t.home.stats.courses}</span></div>
         <div><b>3</b><span>{t.home.stats.langs}</span></div>
         <div><b>24/7</b><span>{t.home.stats.support}</span></div>
       </section>

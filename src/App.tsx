@@ -3,7 +3,7 @@ import { LanguageProvider } from './i18n/LanguageContext'
 import { AuthProvider } from './auth/AuthContext'
 import { Layout } from './components/Layout'
 import Home from './pages/Home'
-import Tutorials from './pages/Learning'
+import Tutorials, { TrackPage } from './pages/Learning'
 import Subscription from './pages/Subscription'
 import { SoftwareDetail, SoftwareList } from './pages/Software'
 import { About, Legal, Search, Support } from './pages/Static'
@@ -19,6 +19,7 @@ export default function App() {
             <Route element={<Layout />}>
               <Route index element={<Home />} />
               <Route path="tutorials" element={<Tutorials />} />
+              <Route path="tutorials/:trackId" element={<TrackPage />} />
               <Route path="learning" element={<Navigate to="/tutorials" replace />} />
               <Route path="subscription" element={<Subscription />} />
               <Route path="software" element={<SoftwareList />} />
